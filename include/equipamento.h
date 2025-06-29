@@ -3,7 +3,8 @@
 
 #include <libpq-fe.h>
 
-// Função para listar todos os equipamentos
 void listar_equipamentos(PGconn* conn);
+void inserir_equipamento(PGconn* conn);
+void remover_equipamento(PGconn* conn);
 
 #endif // EQUIPAMENTO_H

@@ -46,50 +46,18 @@ void exibir_submenu_tuplas() {
     printf("Escolha uma opção: ");
 }
 
-void menu_gerenciar_equipes(PGconn* conn) {
-    int opcao = -1;
-    while(opcao != 0) {
-        printf("\n---- Gerenciar Equipes ----\n");
-        printf("1. Listar todas as equipes\n");
-        printf("2. Adicionar nova equipe\n");
-        printf("3. Remover equipe\n");
-        printf("0. Voltar ao menu principal\n");
-        printf("---------------------------\n");
-        printf("Escolha uma opção: ");
 
-        // Lê a opção do usuário
-        scanf("%d", &opcao);
-
-        // Limpa manualmente o buffer de entrada do teclado
-        int c;
-        while ((c = getchar()) != '\n' && c != EOF);
-
-        switch(opcao) {
-            case 1:
-                listar_equipes(conn);
-                break;
-            case 2:
-                inserir_equipe(conn);
-                break;
-            case 3:
-                remover_equipe(conn);
-                break;
-            case 0:
-                printf("Retornando ao menu principal...\n");
-                break;
-            default:
-                printf("Opção inválida! Tente novamente.\n");
-        }
-    }
-}
 
 void submenu_inserir(PGconn* conn) {
     int opcao = -1;
     while(opcao != 0) {
         printf("\n--- Em qual tabela você deseja INSERIR? ---\n");
-        // Opções para inserção...
         printf("1. Equipe\n");
-        // Adicionar aqui as outras opções (Cliente, Funcionário, etc.)
+        printf("2. Cliente\n");
+        printf("3. Funcionário\n");
+        printf("4. Equipamento\n");
+        printf("5. Anomalia\n");
+        printf("6. Escala\n");
         printf("0. Voltar ao menu principal\n");
         printf("-------------------------------------------\n");
         printf("Escolha uma opção: ");
@@ -99,8 +67,11 @@ void submenu_inserir(PGconn* conn) {
 
         switch(opcao) {
             case 1: inserir_equipe(conn); break;
-            // case 2: inserir_cliente(conn); break; // A ser implementado
-            // ...
+            case 2: inserir_cliente(conn); break;
+            case 3: inserir_funcionario(conn); break;
+            case 4: inserir_equipamento(conn); break;
+            case 5: inserir_anomalia(conn); break;
+            case 6: inserir_escala(conn); break;
             case 0: printf("Retornando...\n"); break;
             default: printf("Opção inválida!\n");
         }
@@ -111,8 +82,12 @@ void submenu_remover(PGconn* conn) {
     int opcao = -1;
     while(opcao != 0) {
         printf("\n--- De qual tabela você deseja REMOVER? ---\n");
-        // Opções para remoção...
         printf("1. Equipe\n");
+        printf("2. Cliente\n");
+        printf("3. Funcionário\n");
+        printf("4. Equipamento\n");
+        printf("5. Anomalia\n");
+        printf("6. Escala\n");
         printf("0. Voltar ao menu principal\n");
         printf("-------------------------------------------\n");
         printf("Escolha uma opção: ");
@@ -122,8 +97,11 @@ void submenu_remover(PGconn* conn) {
 
         switch(opcao) {
             case 1: remover_equipe(conn); break;
-            // case 2: remover_cliente(conn); break; // A ser implementado
-            // ...
+            case 2: remover_cliente(conn); break;
+            case 3: remover_funcionario(conn); break;
+            case 4: remover_equipamento(conn); break;
+            case 5: remover_anomalia(conn); break;
+            case 6: remover_escala(conn); break;
             case 0: printf("Retornando...\n"); break;
             default: printf("Opção inválida!\n");
         }

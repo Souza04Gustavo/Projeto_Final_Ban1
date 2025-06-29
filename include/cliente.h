@@ -2,9 +2,12 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
-#include <libpq-fe.h> // Precisamos disto para usar PGconn
+#include <libpq-fe.h>
 
-// Declaração da função que irá listar todos os clientes
 void listar_clientes(PGconn* conn);
+void inserir_cliente(PGconn* conn);
+void remover_cliente(PGconn* conn);
+
+
 
 #endif // CLIENTE_H

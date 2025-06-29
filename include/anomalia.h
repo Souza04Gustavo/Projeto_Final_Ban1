@@ -3,7 +3,8 @@
 
 #include <libpq-fe.h>
 
-// Função para listar todas as anomalias
 void listar_anomalias(PGconn* conn);
+void inserir_anomalia(PGconn* conn);
+void remover_anomalia(PGconn* conn);
 
 #endif // ANOMALIA_H

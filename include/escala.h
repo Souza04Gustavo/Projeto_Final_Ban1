@@ -3,7 +3,8 @@
 
 #include <libpq-fe.h>
 
-// Função para listar todas as escalas
 void listar_escalas(PGconn* conn);
+void inserir_escala(PGconn* conn);
+void remover_escala(PGconn* conn);
 
 #endif // ESCALA_H
