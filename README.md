@@ -2,7 +2,10 @@
 
 Este repositório contém o projeto final da disciplina de Banco de Dados I, focado na modelagem, criação e manipulação de um banco de dados relacional para uma aplicação de monitoramento de idosos.
 
-**Colaboradores:**
+**Professora:**
+* Rebeca Schroeder Freitas
+
+**Desenvolvedores:**
 *   Gustavo de Souza
 *   José Augusto Laube
 
