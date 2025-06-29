@@ -1,7 +1,6 @@
-// Arquivo: database.c
 #include <stdio.h>
 #include <stdlib.h>
-#include "database.h" // Inclui nossa própria definição
+#include "database.h"
 
 PGconn* conectar_bd() {
     // --- IMPORTANTE: SUBSTITUA COM SEUS DADOS ---
