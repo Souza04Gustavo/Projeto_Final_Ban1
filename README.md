@@ -2,7 +2,10 @@
 
 Este repositório contém o projeto final da disciplina de Banco de Dados I, focado na modelagem, criação e manipulação de um banco de dados relacional para uma aplicação de monitoramento de idosos.
 
-**Colaboradores:**
+**Professora:**
+* Rebeca Schroeder Freitas
+
+**Desenvolvedores:**
 *   Gustavo de Souza
 *   José Augusto Laube
 
@@ -23,24 +26,25 @@ Este repositório abrange duas fases do projeto:
 O banco de dados foi modelado para ser robusto e eficiente, seguindo as boas práticas de normalização. As principais entidades do sistema são:
 
 *   **Clientes:** Idosos que utilizam o serviço.
-*   **Equipamento:** Dispositivos de monitoramento (pulseiras, colares).
-*   **Funcionarios:** Operadores que monitoram os clientes e prestam suporte.
+*   **Equipamento:** Dispositivos de monitoramento.
+*   **Funcionarios:** Operadores que monitoram e prestam suporte.
 *   **Equipes:** Grupos de funcionários organizados por turnos.
-*   **Anomalias:** Registros de eventos críticos detectados pelos dispositivos.
+*   **Escala:** Rotinas de trabalho e horários.
+*   **Anomalias:** Registros de eventos críticos detectados.
 
-O esquema SQL completo para criar a estrutura do banco de dados pode ser encontrado no arquivo `schema.sql`.
+O esquema SQL completo para criar a estrutura do banco de dados pode ser encontrado no arquivo `schema.sql`, e um script para popular o banco com dados de exemplo está em `populate.sql`.
 
 ---
 
-## 3. Requisitos da Aplicação (Fase 2)
+## 3. Funcionalidades Implementadas (Requisitos da Fase 2)
 
-A aplicação de console em C (`monitor_app`) foi desenvolvida para cumprir os seguintes requisitos mínimos:
+A aplicação de console em C (`monitor_app`) foi desenvolvida para cumprir todos os requisitos mínimos da disciplina através de um menu interativo:
 
--   [x] **Inserir novas tuplas:** Adicionar novos registros em todas as tabelas selecionadas.
--   [x] **Remover tuplas:** Deletar registros existentes em todas as tabelas.
--   [x] **Listar todas as tuplas:** Exibir todos os registros de cada tabela.
--   [x] **Consulta com Junção (JOIN):** Implementar uma consulta que combina dados de pelo menos duas tabelas.
--   [x] **Consulta com Subconsulta e Agregação:** Implementar uma consulta que utiliza subconsultas e funções de agregação (ex: `COUNT`, `AVG`).
+-   [x] **Listar Tuplas:** Permite ao usuário escolher e visualizar todos os registros de qualquer uma das tabelas principais.
+-   [x] **Inserir Tuplas:** Permite ao usuário adicionar novos registros em todas as tabelas, solicitando os dados necessários.
+-   [x] **Remover Tuplas:** Permite ao usuário deletar registros de qualquer tabela através do seu ID.
+-   [x] **Consulta com Junção (JOIN):** Implementada como um relatório que lista o equipamento ativo de cada cliente, combinando dados das tabelas `Clientes` e `Equipamento`.
+-   [x] **Consulta com Subconsulta e Agregação:** Implementada como um relatório que conta o total de anomalias por cliente, utilizando `SUBQUERY` e a função `COUNT()`.
 
 ---
 
@@ -51,6 +55,9 @@ A aplicação de console em C (`monitor_app`) foi desenvolvida para cumprir os s
 *   **Biblioteca de Conexão:** `libpq` (biblioteca C oficial do PostgreSQL)
 *   **Sistema Operacional (Desenvolvimento):** Linux (Ubuntu)
 *   **Compilador:** GCC
+*   **Estrutura do Projeto:**
+    *   `/src`: Contém todos os arquivos de implementação (`.c`).
+    *   `/include`: Contém todos os arquivos de cabeçalho (`.h`).
 
 ---
 
@@ -82,7 +89,7 @@ cd Projeto_Final_Ban1
 ```
 
 **2. Configure o Banco de Dados:**
-Primeiro, configure um usuário e uma senha no PostgreSQL. Em seguida, crie e popule o banco de dados usando os scripts fornecidos.
+Primeiro, configure um usuário e uma senha no PostgreSQL. Em seguida, crie e popule o banco de dados usando os scripts fornecidos. (Possível fazer usando PgAdmin4)
 
    a. **Crie a estrutura do banco de dados:**
    ```bash
@@ -105,7 +112,7 @@ const char *conninfo = "dbname=seu_banco user=seu_usuario password=sua_senha hos
 **4. Compile a Aplicação:**
 Use o seguinte comando no terminal, na raiz do projeto:
 ```bash
-gcc -o monitor_app main.c database.c cliente.c -I/usr/include/postgresql -lpq
+gcc -o monitor_app src/main.c src/database.c src/cliente.c src/funcionario.c src/equipe.c src/equipamento.c src/escala.c src/anomalia.c src/relatorios.c -Iinclude -I/usr/include/postgresql -lpq
 ```
 
 **5. Execute o Programa:**
